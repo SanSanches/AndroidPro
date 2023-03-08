@@ -15,10 +15,12 @@ import android.widget.Toast;
 public class Calculator extends AppCompatActivity {
 
     private static final String  LogCat = "CALCULATOR_ACTIVITY";
+    private static final String LifeCycleTag = "LIFECYCLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LifeCycleTag, "I'm on created");
         setContentView(R.layout.activity_calculator);
 
         final Button calculate = (Button) findViewById(R.id.calc);
@@ -44,6 +46,9 @@ public class Calculator extends AppCompatActivity {
         TextView answer = (TextView) findViewById(R.id.result);
 
         Log.d(LogCat, "All views have been founded");
+
+        String num1 = numOne.getText().toString();
+        String num2 = numTwo.getText().toString();
 
         float numone = Integer.parseInt(numOne.getText().toString());
         float numtwo = Integer.parseInt(numTwo.getText().toString());
