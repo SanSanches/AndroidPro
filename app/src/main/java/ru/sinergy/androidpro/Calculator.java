@@ -2,6 +2,7 @@ package ru.sinergy.androidpro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,14 +28,14 @@ public class Calculator extends AppCompatActivity {
         setContentView(R.layout.activity_calculator);
 
         // Context training
-        TextView textView = new TextView(this);
-        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),);
-
-            //Доступ из класса Activity - наследник Context
-        getSystemService(LAYOUT_INFLATER_SERVICE);
-
-            //Shared prefs - доступ с использованием контекста приложения
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
+//        TextView textView = new TextView(this);
+//        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),);
+//
+//            //Доступ из класса Activity - наследник Context
+//        getSystemService(LAYOUT_INFLATER_SERVICE);
+//
+//            //Shared prefs - доступ с использованием контекста приложения
+//        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
         ////
 
         final Button calculate = (Button) findViewById(R.id.calc);
@@ -42,6 +43,8 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(LogCat, "Button have been pushed");
+                Intent i = new Intent(Calculator.this, MainActivity.class);
+                startActivity(i);
 
             calculateAnswer();
             }
@@ -56,6 +59,10 @@ public class Calculator extends AppCompatActivity {
         RadioButton sub = (RadioButton) findViewById(R.id.subtract);
         RadioButton multiple = (RadioButton) findViewById(R.id.multiple);
         RadioButton divide = (RadioButton) findViewById(R.id.divide);
+
+        numOne.setText("0");
+        numTwo.setText("0");
+        add.setChecked(true);
 
         TextView answer = (TextView) findViewById(R.id.result);
 
